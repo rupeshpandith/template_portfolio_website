@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rupesh Pandith | Portfolio</title>
+  <meta name="description" content="Portfolio website of Rupesh Pandith, a 2nd year student and aspiring developer. Showcasing projects, resume, and contact information.">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/4b8b8b8b8b.js" crossorigin="anonymous"></script>
+
+  <style>
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #3B82F6;
+      width: 0;
+      z-index: 50;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .glow-box {
+      border: 2px solid #3B82F6;
+      border-radius: 0.75rem;
+      transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+      box-shadow: 0 0 0px #3B82F6;
+      background: rgba(59, 130, 246, 0.10);
+      color: #3B82F6;
+    }
+    .glow-box i {
+      color: #3B82F6;
+      transition: color 0.3s;
+    }
+    .glow-box:hover, .glow-box:focus {
+      box-shadow: 0 0 16px 2px #3B82F6, 0 0 4px 1px #60A5FA;
+      border-color: #60A5FA;
+      background: #1e293b;
+      outline: none;
+    }
+    .glow-box:hover i, .glow-box:focus i {
+      color: #60A5FA;
+    }
+    .glass.project-glow {
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s, border-color 0.3s, background 0.3s;
+      box-shadow: 0 0 0px #3B82F6;
+    }
+    .glass.project-glow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 60% 40%, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.10) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .glass.project-glow:hover,
+    .glass.project-glow:focus {
+      box-shadow: 0 0 32px 8px #3B82F6, 0 0 8px 2px #60A5FA;
+      border-color: #60A5FA;
+      background: rgba(30,41,59,0.85);
+    }
+    .glass.project-glow:hover::before,
+    .glass.project-glow:focus::before {
+      opacity: 1;
+    }
+    .project-glow {
+      transition: box-shadow 0.4s, background 0.4s;
+    }
+    .project-glow:hover, .project-glow:focus {
+      box-shadow: 0 0 32px 8px #3B82F6, 0 0 8px 2px #60A5FA;
+      background: rgba(59, 130, 246, 0.15);
+      border-color: #60A5FA;
+    }
+  </style>
+</head>
+<body class="bg-[#0A0A0A] text-[#E5E7EB] overflow-x-hidden">
+
+  <!-- Navigation Bar -->
+  <nav class="fixed w-full z-40 top-0 left-0 bg-[#0A0A0A]/80 backdrop-blur-lg border-b border-[#222]">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <span class="font-bold text-xl tracking-widest">Portfolio</span>
+      <ul class="flex gap-6 text-sm">
+        <li><a href="#hero" class="hover:text-blue-400">Home</a></li>
+        <li><a href="#about" class="hover:text-blue-400">About</a></li>
+        <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
+        <li><a href="#resume" class="hover:text-blue-400">Resume</a></li>
+        <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="pt-20">
+  <!-- Scroll Progress -->
+  <div id="progress"></div>
+
+  <!-- Hero Section -->
+<section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="text-center fade-up">
+    <img src="Profile Photo.png" alt="Rupesh Pandith portrait" class="mx-auto w-56 h-56 rounded-full mb-6 border-4 border-blue-400 shadow-lg" onerror="this.onerror=null;this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+    <h1 class="text-6xl font-light tracking-widest">Rupesh Pandith</h1>
+    <p class="mt-4 text-xl font-thin">2nd Year Student | Aspiring Developer</p>
+  </div>
+</section>
+
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-8 max-w-4xl mx-auto fade-up">
+    <div class="glass p-10 rounded-xl">
+      <h2 class="text-4xl mb-6">About Me</h2>
+      <p class="leading-relaxed">
+        Hi! I'm Rupesh Pandith, a passionate 2nd year Computer Science student. I love building web applications, learning new technologies, and collaborating on open-source projects. My interests include frontend development, UI/UX design, and automation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-[#111111] px-8 fade-up">
+    <h2 class="text-4xl text-center mb-8">Featured Projects</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="glass project-glow p-6 rounded-lg">
+        <h3 class="text-2xl mb-2">Personal Portfolio Website</h3>
+        <p class="text-sm mb-4">A modern, responsive portfolio website built with HTML, Tailwind CSS, and GSAP animations. Showcases my projects, resume, and contact info.</p>
+        <a href="#" class="underline">View Project →</a>
+      </div>
+      <div class="glass project-glow p-6 rounded-lg">
+        <h3 class="text-2xl mb-2">Roommate Finder App</h3>
+        <p class="text-sm mb-4">A web app to help users easily find and connect with compatible roommates online.</p>
+        <a href="https://roommatefinder.lovable.app/" class="underline" target="_blank">View Project →</a>
+      </div>
+      <div class="glass project-glow p-6 rounded-lg">
+        <h3 class="text-2xl mb-2">StudyFlow</h3>
+        <p class="text-sm mb-4">A modern productivity platform for students to organize tasks, track progress, and boost study efficiency with an intuitive interface.</p>
+        <a href="https://tiny-naiad-cc0962.netlify.app/" class="underline" target="_blank">View Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="py-20 px-8 max-w-3xl mx-auto fade-up">
+    <div class="glass p-10 rounded-xl">
+      <h2 class="text-4xl mb-6">Resume</h2>
+      <a href="https://drive.google.com/file/d/1E49b-RSTzmUDtmluMaaAQNRHn34tUUhO/view?usp=sharing" class="text-indigo-400 underline" target="_blank">Download Resume (PDF)</a>
+      <iframe src="https://drive.google.com/file/d/1E49b-RSTzmUDtmluMaaAQNRHn34tUUhO/preview" class="w-full h-96 mt-6 rounded" title="Rupesh Pandith Resume" aria-label="Resume PDF"></iframe>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-[#111111] px-8 max-w-4xl mx-auto fade-up">
+    <div class="glass p-10 rounded-xl">
+      <h2 class="text-4xl mb-6">Get In Touch</h2>
+      <form class="flex flex-col gap-4" id="contactForm">
+        <label for="name" class="sr-only">Your Name</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" class="p-3 bg-[#1F1F1F] rounded" required />
+        <label for="email" class="sr-only">Your Email</label>
+        <input id="email" name="email" type="email" placeholder="Your Email" class="p-3 bg-[#1F1F1F] rounded" required />
+        <label for="message" class="sr-only">Your Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" class="p-3 bg-[#1F1F1F] rounded h-32" required></textarea>
+        <button type="submit" class="mt-2 px-6 py-3 bg-[#3B82F6] rounded-lg self-start">Send</button>
+        <p id="formMsg" class="text-green-400 mt-2 hidden">Thank you for reaching out! I'll get back to you soon.</p>
+      </form>
+      <div class="mt-6 flex gap-6 text-lg flex-wrap">
+        <a href="mailto:rupeshpandith1836@gmail.com" class="glow-box px-4 py-2 flex items-center gap-2 hover:text-blue-400"><i class="fas fa-envelope"></i> rupeshpandith1836@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rupesh-pandith-b99874328/" target="_blank" class="glow-box px-4 py-2 flex items-center gap-2 hover:text-blue-400"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/rupeshpandith" target="_blank" class="glow-box px-4 py-2 flex items-center gap-2 hover:text-blue-400"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.instagram.com/irupeesh/" target="_blank" class="glow-box px-4 py-2 flex items-center gap-2 hover:text-blue-400"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="text-center py-6 text-sm text-[#888] bg-[#0A0A0A] border-t border-[#222]">
+    &copy; 2025 Rupesh Pandith. All rights reserved.
+  </footer>
+
+  <!-- Scroll Progress & Animations -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollPos / docHeight) * 100;
+      document.getElementById('progress').style.width = scrollPercent + '%';
+    });
+
+    // Fade-up animation on scroll
+    const faders = document.querySelectorAll('.fade-up');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        gsap.to(entry.target, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' });
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Contact form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formMsg').classList.remove('hidden');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
